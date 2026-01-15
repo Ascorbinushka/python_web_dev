@@ -1,0 +1,48 @@
+import socket
+import datetime
+import random
+
+HOST = ('127.0.0.1', 7777)
+
+def log_command(command: str):
+    with open("home_work\sockets_http\server_log.txt", "a", encoding="utf-8") as f:
+        f.write(f"{datetime.datetime.now()} - {command}\n")
+
+def start_server(sock):
+    sock.bind(HOST)
+    sock.listen()
+    print(f"Сервер запущен на {HOST}")
+
+    conn, addr = sock.accept()
+    with conn:
+        print(f"Подключен клиент: {addr}")
+        while True:
+            data = conn.recv(1024).decode("utf-8").strip()
+            if not data:
+                break
+
+            log_command(data)  # логируем команды
+
+            if data == "time":
+                response = str(datetime.datetime.now())
+            elif data.startswith("rnd"):
+                try:
+                    _, a, b = data.split()
+                    a, b = int(a), int(b)
+                    response = str(random.randint(a, b))
+                except Exception:
+                    response = "Ошибка: команда rnd должна быть вида 'rnd a b'"
+            elif data == "stop":
+                response = "Сервер остановлен"
+                conn.sendall(response.encode("utf-8"))
+                break
+            else:
+                response = f"Неизвестная команда: {data}"
+
+            conn.sendall(response.encode("utf-8"))
+
+    print("Сервер завершил работу")
+
+if __name__ == "__main__":
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    start_server(sock)
