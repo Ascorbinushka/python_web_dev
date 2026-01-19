@@ -1,11 +1,12 @@
 import socket
 import datetime
 import random
-
+import os
 HOST = ('127.0.0.1', 7777)
 
 def log_command(command: str):
-    with open(r"home_work\sockets_http\01\server_log.txt", "a", encoding="utf-8") as f:
+    log_path = os.path.join(os.path.dirname(__file__), "server_log.txt")
+    with open(log_path, "a", encoding="utf-8") as f:
         f.write(f"{datetime.datetime.now()} - {command}\n")
 
 def start_server(sock):
