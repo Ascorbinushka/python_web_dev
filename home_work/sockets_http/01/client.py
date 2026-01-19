@@ -1,5 +1,5 @@
 import socket
-
+# SOCK_DGRAM - UDP,  SOCK_STREAM - TCP, AF_INET - ip v4
 HOST = ('127.0.0.1', 7777)
 
 def start_client(sock):

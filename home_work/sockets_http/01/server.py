@@ -5,7 +5,7 @@ import random
 HOST = ('127.0.0.1', 7777)
 
 def log_command(command: str):
-    with open("home_work\sockets_http\server_log.txt", "a", encoding="utf-8") as f:
+    with open(r"home_work\sockets_http\01\server_log.txt", "a", encoding="utf-8") as f:
         f.write(f"{datetime.datetime.now()} - {command}\n")
 
 def start_server(sock):
@@ -13,7 +13,7 @@ def start_server(sock):
     sock.listen()
     print(f"Сервер запущен на {HOST}")
 
-    conn, addr = sock.accept()
+    conn, addr = sock.accept() # залипает на этой строчке и ждет запроса от любого клиента
     with conn:
         print(f"Подключен клиент: {addr}")
         while True:
@@ -44,5 +44,6 @@ def start_server(sock):
     print("Сервер завершил работу")
 
 if __name__ == "__main__":
+    # SOCK_DGRAM - UDP,  SOCK_STREAM - TCP, AF_INET - ip v4
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     start_server(sock)
