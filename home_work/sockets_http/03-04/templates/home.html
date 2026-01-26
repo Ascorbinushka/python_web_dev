@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+        }
+        /* Блок приветствия */
+        .welcome {
+            background-color: #e9ecef;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+        }
+        /* Верхнее меню */
+        .navbar {
+            display: flex;
+            background-color: #007bff;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-right: 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+        /* Контент */
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        /* Ссылка назад в правом верхнем углу */ 
+        .top-right-link { 
+            position: absolute; /* фиксируем позицию */ 
+            top: 10px; /* отступ сверху */ 
+            right: 15px; /* отступ справа */ 
+            font-size: 0.9em; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Приветствие для залогиненного пользователя -->
+    {% if session.logged_in %}
+        <div class="welcome">
+            Приветствуем вас {{ session.fullname }}
+        </div>
+    {% endif %}
+
+    <!-- Верхнее меню -->
+    <div class="navbar">
+        <a href="/duck/">🦆 Утка</a>
+        <a href="/fox/1">🦊 Лиса (1–10)</a>
+        <a href="/weather-minsk/">☁️ Погода Минск</a>
+        <a href="/weather/Moscow">🌍 Погода в городе</a>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content">
+        <h1>Добро пожаловать на сайт!</h1>
+        <p>Выберите пункт меню сверху, чтобы посмотреть утку, лису или погоду.</p>
+    </div>
+
+    <!-- Ссылка назад в правом верхнем углу -->
+    <div class="top-right-link">
+        <a href="/register/" class="back-link">← Назад к регистрации</a> 
+    </div>
+</body>
+</html>
