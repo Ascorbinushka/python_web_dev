@@ -1,0 +1,75 @@
+
+      @import url("home.css");
+      /* Контейнер формы */
+        .form-container {
+            background: #fff;                /* Белый фон */
+            padding: 30px;                   /* Внутренние отступы */
+            border-radius: 8px;              /* Скруглённые углы */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Тень */
+            width: 300px;                    /* Ширина блока */
+            text-align: center;              /* Текст по центру */
+        }
+
+        /* Заголовок формы */
+        .form-container h2 {
+            margin-bottom: 20px;             /* Отступ снизу */
+        }
+
+        /* Поля ввода */
+        .form-container input {
+            width: 100%;                     /* Растягиваем на всю ширину контейнера */
+            padding: 10px;                   /* Внутренний отступ */
+            margin: 8px 0;                   /* Отступ сверху/снизу */
+            border: 1px solid #ccc;          /* Серый бордер */
+            border-radius: 4px;              /* Скруглённые углы */
+        }
+
+        /* Контейнер для кнопок */
+        .button-row {
+            display: flex;                   /* Кнопки в ряд */
+            justify-content: space-between;  /* Раздвигаем их по краям */
+            margin-top: 20px;                /* Отступ сверху */
+        }
+
+        /* Стили кнопок */
+        .button-row button {
+            flex: 1;                         /* Каждая кнопка занимает равное место */
+            margin: 0 5px;                   /* Отступы между кнопками */
+            padding: 10px;                   /* Внутренний отступ */
+            border: none;                    /* Без рамки */
+            border-radius: 4px;              /* Скруглённые углы */
+            background: #007bff;             /* Синий фон */
+            color: white;                    /* Белый текст */
+            cursor: pointer;                 /* Курсор "рука" */
+        }
+
+        /* Эффект при наведении */
+        .button-row button:hover {
+            background: #0056b3;             /* Более тёмный синий */
+        }
+        /* Стили для label */ 
+        .form-container label {
+            display: block; /* каждая метка занимает всю строку */ 
+            text-align: left; /* выравнивание по левому краю */ 
+            font-size: 0.8em; /* немного меньше шрифт */ 
+            margin-top: 5px; /* отступ сверху */ 
+            /* margin-bottom: 3px; небольшой отступ снизу  */
+            color: #333; /* тёмно-серый цвет */
+            padding-left: 7px; /* небольшой отступ слева */
+         }
+                /* маленькая ссылка назад */
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #666;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .err { 
+            color: red; 
+            font-size: 0.9em; 
+            margin-bottom: 10px; 
+        }

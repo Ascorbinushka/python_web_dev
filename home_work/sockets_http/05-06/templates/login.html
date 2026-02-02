@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+    <div class="form-container">
+        <h2>Вход</h2>
+        <!-- выводим сообщение об ошибке --> 
+        {% if err %} 
+            <p class="err">{{ err }}</p> 
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+        <form method="POST">
+        
+
+            <!-- Логин: латиница, цифры и _, длина 6-20 -->
+            <label for="username">Логин</label>
+            <input type="text" name="username" placeholder="Логин" 
+                   pattern="^[A-Za-z0-9_]{6,20}$" required 
+                   title="Логин: латинские буквы, цифры и _, от 6 до 20 символов"
+                   value="{{username}}"
+                   >
+                    
+            <!-- Пароль: хотя бы 1 строчная, 1 заглавная, 1 цифра, длина 8-15 -->
+            <label for="password">Пароль</label>
+            <input type="password" name="password" placeholder="Пароль" 
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,15}$" required 
+                   title="Пароль: 1 строчная, 1 заглавная, 1 цифра, длина 8-15">
+
+            <div class="button-row">
+                <button type="submit">Вход</button>
+            </div>
+        </form>
+        <!-- Ссылка назад -->
+        <a href="/register/" class="back-link">← Назад к регистрации</a>
+    </div>
+
+{% endblock %}

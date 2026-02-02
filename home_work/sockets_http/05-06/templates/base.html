@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная страница{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">🐍 FlaskSite</div>
+            {% if session.logged_in %}
+                <div class="welcome">Приветствуем вас {{ session.fullname }}</div>
+            {% endif %}
+            <nav class="navbar">
+                <a href="/duck/">🦆 Утка</a>
+                <a href="/fox/1">🦊 Лиса (1–10)</a>
+                <a href="/weather-minsk/">☁️ Погода Минск</a>
+                <a href="/weather/Moscow">🌍 Погода в городе</a>
+            </nav>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            &copy; 2026 Мой сайт
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* Контейнер формы */
+.form-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Заголовок формы */
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+/* Поля ввода */
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Метки */
+.form-container label {
+    display: block;
+    text-align: left;
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: #333;
+    padding-left: 7px;
+}
+
+/* Ошибки */
+.err {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Контейнер для кнопок */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Кнопки */
+.button-row button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.button-row button:hover {
+    background: #0056b3;
+}

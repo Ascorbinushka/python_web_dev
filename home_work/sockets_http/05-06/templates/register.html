@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Регистрация</h2>
+    {% if err %}
+        <p class="err">{{ err }}</p>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+    <form method="POST">
+        <label for="first_name">Имя</label>
+        <input type="text" name="first_name" placeholder="Имя" 
+               pattern="^[А-Яа-яЁё]+$" required 
+               title="Имя должно содержать только русские буквы"
+               value="{{first_name}}">
+
+        <label for="last_name">Фамилия</label>
+        <input type="text" name="last_name" placeholder="Фамилия" 
+               pattern="^[А-Яа-яЁё]+$" required 
+               title="Фамилия должна содержать только русские буквы"
+               value="{{last_name}}">
+
+        <label for="age">Возраст</label>
+        <input type="number" name="age" placeholder="Возраст" 
+               min="12" max="100" required 
+               title="Возраст должен быть от 12 до 100"
+               value="{{age}}">
+
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" required value="{{email}}">
+
+        <label for="username">Логин</label>
+        <input type="text" name="username" placeholder="Логин" 
+               pattern="^[A-Za-z0-9_]{6,20}$" required 
+               title="Логин: латинские буквы, цифры и _, от 6 до 20 символов">
+
+        <label for="password">Пароль</label>
+        <input type="password" name="password" placeholder="Пароль" 
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,15}$" required 
+               title="Пароль: 1 строчная, 1 заглавная, 1 цифра, длина 8-15">
+
+        <div class="button-row">
+            <button type="submit" name="action" value="register">Регистрация</button>
+            <button type="submit" name="action" value="login" formnovalidate>Вход</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}HOME{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Вы авторизованы!</h2>
+    {% if err %}
+        <p class="err">{{ err }}</p>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    </form>
+</div>
+{% endblock %}
