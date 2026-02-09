@@ -1,0 +1,369 @@
+/* ===== CSS RESET И БАЗОВЫЕ ПЕРЕМЕННЫЕ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Цветовая палитра */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --surface-color: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #667eea;
+    
+    /* Размеры */
+    --container-max-width: 1200px;
+    --border-radius: 8px;
+    
+    /* Отступы */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+}
+
+/* ===== БАЗОВАЯ СТРУКТУРА САЙТА ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    
+    /* Фоновое изображение */
+    background-image: url(https://kinderbooks.ru/800/600/https/st.depositphotos.com/2565305/5011/v/450/depositphotos_50111615-stock-illustration-abstract-light-purple-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    /* ОСНОВНАЯ СЕТКА САЙТА: header - main - footer */
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;  /* header - main - footer */
+}
+
+/* ===== ОСНОВНОЙ КОНТЕЙНЕР ===== */
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(2px);
+}
+
+/* ===== ШАПКА САЙТА ===== */
+.header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: var(--space-sm) 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    
+    /* СЕТКА НАВИГАЦИИ: логотип + меню */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.nav-brand h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.nav-menu {
+    display: grid;
+    grid-auto-flow: column;  /* Элементы в строку */
+    grid-auto-columns: max-content; /* Ширина по содержимому */
+    gap: var(--space-lg);
+    list-style: none;
+    justify-self: end;  /* Выравнивание по правому краю */
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ С СЕТКОЙ ===== */
+.main-container {
+    flex: 1;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-lg);
+    
+    /* ОСНОВНАЯ СЕТКА КОНТЕНТА: sidebar + content */
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    grid-template-areas: "sidebar content";
+    gap: var(--space-lg);
+}
+
+/* Боковая панель */
+.sidebar {
+    grid-area: sidebar;
+    background: var(--surface-color);
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sidebar h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--accent-color);
+}
+
+/* Основная область контента */
+.main-content {
+    grid-area: content;
+    min-height: 400px;
+}
+
+/* ===== СЕТКА ДЛЯ РАЗЛИЧНЫХ СЕКЦИЙ ===== */
+
+/* Секция приветствия */
+.welcome-section {
+    background: var(--surface-color);
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+/* СЕТКА КАРТОЧЕК ФИЧ */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.feature-card {
+    padding: var(--space-lg) var(--space-sm);
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-card h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--space-sm);
+}
+
+/* Кнопки действий */
+.action-buttons {
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+/* ===== ФОРМЫ АВТОРИЗАЦИИ С СЕТКОЙ ===== */
+.auth-section {
+    background: var(--surface-color);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.auth-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--accent-color);
+}
+
+/* СЕТКА ДЛЯ ДВУХ ФОРМ */
+.auth-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.auth-form {
+    padding: var(--space-md);
+    border: 1px solid #e1e1e1;
+    border-radius: var(--border-radius);
+}
+
+.auth-form h3 {
+    margin-bottom: var(--space-sm);
+    text-align: center;
+    color: #764ba2;
+}
+
+/* Группы форм */
+.form-group {
+    margin-bottom: var(--space-sm);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    padding: var(--space-sm);
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+}
+
+.btn-secondary {
+    background: var(--secondary-gradient);
+}
+
+/* Особые стили для кнопок в action-buttons */
+.action-buttons .btn {
+    padding: var(--space-sm) var(--space-lg);
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* ===== УВЕДОМЛЕНИЯ ===== */
+.flash-message {
+    padding: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===== ПОДВАЛ ===== */
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: var(--space-sm);
+}
+
+/* ===== АДАПТИВНАЯ СЕТКА ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ===== */
+@media (max-width: 768px) {
+    /* Меняем основную сетку на одноколоночную */
+    .main-container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "content";
+        grid-template-rows: auto;
+        padding: var(--space-sm);
+    }
+    
+    /* Скрываем sidebar на мобильных или делаем его после контента */
+    .sidebar {
+        display: none; /* Или grid-area: unset; чтобы убрать из сетки */
+    }
+    
+    /* Навигация в столбец */
+    .nav {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+    
+    .nav-menu {
+        grid-auto-flow: row; /* Элементы в столбец */
+        gap: var(--space-sm);
+        justify-self: center;
+    }
+    
+    /* Формы авторизации в одну колонку */
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Карточки фич в одну колонку */
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Кнопки в столбец на мобильных */
+    .action-buttons {
+        grid-auto-flow: row;
+        gap: var(--space-sm);
+    }
+    
+    .action-buttons .btn {
+        width: 200px;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    .welcome-section {
+        padding: var(--space-md);
+    }
+    
+    .auth-form {
+        padding: var(--space-sm);
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
